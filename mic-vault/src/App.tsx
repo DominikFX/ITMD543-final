@@ -9,7 +9,7 @@ function App() {
       <div className="card">
         <p>
           This is the landing page for my final project in the ITMD 543 course.
-          Dominik Kulawiak
+          Dominik Kulawiak.
         </p>
       </div>
     </>

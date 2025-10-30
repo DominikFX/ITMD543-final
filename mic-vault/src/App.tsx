@@ -1,18 +1,12 @@
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import Landing from './components/Landing'
+import Inventory from './components/Inventory'
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      <h1>ITMD 543 Final Landing Page</h1>
-      <div className="card">
-        <p>
-          This is the landing page for my final project in the ITMD 543 course.
-          Dominik Kulawiak.
-        </p>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/inventory" element={<Inventory />} />
+    </Routes>
   )
 }
-
-export default App

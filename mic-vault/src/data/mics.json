@@ -1,0 +1,32 @@
+[
+  {
+    "id": "d-1",
+    "label": "Handheld 1",
+    "brand": "Shure",
+    "band": "H50",
+    "frequencyMHz": 534.125,
+    "lastServiced": "2025-08-01"
+  },
+  {
+    "id": "d-2",
+    "label": "Bodypack A",
+    "brand": "Sennheiser",
+    "band": "A1",
+    "frequencyMHz": 470.3
+  },
+  {
+    "id": "d-3",
+    "label": "HH-Lead",
+    "brand": "Shure",
+    "band": "G50",
+    "frequencyMHz": 482.65,
+    "lastServiced": "2025-06-12"
+  },
+  {
+    "id": "d-4",
+    "label": "BP-Spare",
+    "brand": "Audio-Tech",
+    "band": "DE2",
+    "frequencyMHz": 542.9
+  }
+]

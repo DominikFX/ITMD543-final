@@ -4,11 +4,17 @@ import Navbar from '../components/Navbar'
 import Features from '../components/Features'
 import Footer from '../components/Footer'
 import AddMicModal from '../components/AddMicModal'
-//import { useVault } from '../store/useVault'
+import { useVault } from '../store/useVault'
+import type { Mic } from '../types'
 
 export default function Landing() {
-  //const { addMic } = useVault()
+  const { addMic } = useVault()
   const [open, setOpen] = useState(false)
+
+  function handleSave(mic: Mic) {
+    addMic(mic)
+    setOpen(false)
+  }
 
   return (
     <>
@@ -52,13 +58,8 @@ export default function Landing() {
       <AddMicModal
         open={open}
         onClose={() => setOpen(false)}
-        onSave={(_m) => { setOpen(false) }} 
+        onSave={handleSave}
       />
-      {/*<AddMicModal
-        open={open}
-        onClose={() => setOpen(false)}
-        onSave={(m) => { addMic(m); setOpen(false) }}
-      />*/}
     </>
   )
 }

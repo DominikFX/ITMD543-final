@@ -1,15 +1,25 @@
+import { useState } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import AddMicModal from '../components/AddMicModal'
 import { useVault } from '../store/useVault'
+import type { Mic } from '../types'
 import { CheckCircledIcon, ExclamationTriangleIcon } from '@radix-ui/react-icons'
 
 export default function Spectrum() {
-  const { mics } = useVault()
+  const { mics, addMic } = useVault()
+  const [isModalOpen, setModalOpen] = useState(false)
+
   const sortedMics = [...mics].sort((a, b) => a.frequencyMHz - b.frequencyMHz)
+
+  function handleSave(mic: Mic) {
+    addMic(mic)
+    setModalOpen(false)
+  }
 
   return (
     <>
-      <Navbar />
+      <Navbar onAddClick={() => setModalOpen(true)} />
       <section className="hero hero--mini">
         <div className="container hero__mini">
           <h1>Frequency Ladder</h1>
@@ -64,6 +74,12 @@ export default function Spectrum() {
         </div>
       </section>
       <Footer />
+
+      <AddMicModal
+        open={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        onSave={handleSave}
+      />
     </>
   )
 }

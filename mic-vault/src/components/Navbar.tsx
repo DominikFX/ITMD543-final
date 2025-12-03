@@ -10,6 +10,7 @@ export default function Navbar({ onAddClick }: Props) {
         <button className="brand" onClick={() => nav('/')}>Wireless Mic Vault</button>
         <nav className="nav__links">
           <Link to="/inventory" className="nav__link">Inventory</Link>
+          <Link to="/frequencies" className="nav__link">Frequencies</Link>
           <button className="btn btn--primary" onClick={onAddClick}>Add Mic</button>
         </nav>
       </div>

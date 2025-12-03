@@ -405,3 +405,109 @@ a {
   color: #5b6476;
   text-align: center
 }
+
+/* Spectrum page */
+.ladder {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.ladder__step {
+  display: flex;
+  flex-direction: column;
+}
+
+.mic-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  border: 1px solid #e5e8f1;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  position: relative;
+  z-index: 2;
+}
+
+.mic-card__freq {
+  font-family: 'SF Mono', 'Roboto Mono', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0e1330;
+  min-width: 140px;
+}
+
+.mic-card__freq .unit {
+  font-size: 14px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.mic-card__label {
+  font-weight: 600;
+  font-size: 18px;
+  color: #0b0d12;
+}
+
+.mic-card__band {
+  font-size: 13px;
+  color: #5b6476;
+}
+
+.connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60px;
+  position: relative;
+}
+
+.connector__line {
+  width: 2px;
+  flex: 1;
+  background: #e5e8f1;
+}
+
+.connector__badge {
+  background: #f6f8ff;
+  border: 1px solid #e5e8f1;
+  color: #5b6476;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.connector--danger .connector__line {
+  background: #fecaca;
+}
+
+.connector--danger .connector__badge {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #ef4444;
+}
+
+.connector--warning .connector__line {
+  background: #fde047; 
+}
+
+.connector--warning .connector__badge {
+  background: #fefce8;
+  border-color: #fde047;
+  color: #b45309;
+}
+
+.connector--safe .connector__line {
+  background: #bbf7d0;
+}
+.connector--safe .connector__badge {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #16a34a;
+}

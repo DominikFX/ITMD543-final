@@ -47,7 +47,7 @@ export default function Frequencies() {
       <section className="hero-gradient pt-28 pb-20 border-b border-gray-200/20">
         <div className="max-w-[1100px] w-[92%] mx-auto">
           <h1 className="text-3xl font-bold text-white mb-2">Frequency Ladder</h1>
-          <p className="text-blue-100">A simple list of your RF landscape, ordered from low to high.</p>
+          <p className="text-blue-100 max-w-2xl">Listed below are the microphones from lowest to highest frequency to show how much "breathing room" exists between them. Green lines mean there is plenty of safe space for clear audio, while red or yellow warnings indicate channels that are too close together, which can cause static or signal dropouts.</p>
         </div>
       </section>
       <section className="py-12 flex-1">

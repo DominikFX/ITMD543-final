@@ -25,8 +25,38 @@
   {
     "id": "d-4",
     "label": "BP-Spare",
-    "brand": "Audio-Tech",
+    "brand": "Sennheiser",
     "band": "DE2",
     "frequencyMHz": 542.9
+  },
+  {
+    "id": "d-5",
+    "label": "Handheld 2",
+    "brand": "Shure",
+    "band": "H50",
+    "frequencyMHz": 534.800,
+    "lastServiced": "2025-08-01"
+  },
+  {
+    "id": "d-6",
+    "label": "Handheld 3",
+    "brand": "Sennheiser",
+    "band": "A1",
+    "frequencyMHz": 470.600
+  },
+  {
+    "id": "d-7",
+    "label": "Guest Lav",
+    "brand": "Shure",
+    "band": "B1",
+    "frequencyMHz": 505.200,
+    "lastServiced": "2024-12-15"
+  },
+  {
+    "id": "d-8",
+    "label": "Lead Vocal",
+    "brand": "Shure",
+    "band": "G50",
+    "frequencyMHz": 490.500
   }
 ]

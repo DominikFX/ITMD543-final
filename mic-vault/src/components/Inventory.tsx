@@ -50,7 +50,6 @@ export default function Inventory() {
         <div className="max-w-[1100px] w-[92%] mx-auto">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900">Inventory</h2>
-            <button className="bg-brand-dark text-white px-4 py-2 rounded-xl font-semibold hover:opacity-90 cursor-pointer" onClick={() => { setEditing(null); setOpen(true) }}>Add Mic</button>
           </div>
           <Table rows={rows} onEdit={handleEdit} onDelete={handleDelete} />
         </div>

@@ -36,21 +36,21 @@ export default function Inventory() {
   }
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar onAddClick={() => { setEditing(null); setOpen(true) }} />
 
-      <section className="hero hero--mini">
-        <div className="container hero__mini">
-          <h1>Vault Inventory</h1>
-          <p>Track wireless microphone's band, frequency, and service date in one place. Click the button above to register a microphone, then you can edit the registered microphone's details, or delete it. Frequencies must be entered as XXX.XXX MHz.</p>
+      <section className="hero-gradient pt-28 pb-20 border-b border-gray-200/20">
+        <div className="max-w-[1100px] w-[92%] mx-auto">
+          <h1 className="text-3xl font-bold text-white mb-2">Vault Inventory</h1>
+          <p className="text-blue-100 max-w-2xl">Track wireless microphone's band, frequency, and service date in one place. Click the button above to register a microphone, then you can edit the registered microphone's details, or delete it. Frequencies must be entered as XXX.XXX MHz.</p>
         </div>
       </section>
 
-      <section className="section section--padded">
-        <div className="container">
-          <div className="inventory__header">
-            <h2>Inventory</h2>
-            <button className="btn btn--primary" onClick={() => { setEditing(null); setOpen(true) }}>Add Mic</button>
+      <section className="py-12 flex-1">
+        <div className="max-w-[1100px] w-[92%] mx-auto">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Inventory</h2>
+            <button className="bg-brand-dark text-white px-4 py-2 rounded-xl font-semibold hover:opacity-90 cursor-pointer" onClick={() => { setEditing(null); setOpen(true) }}>Add Mic</button>
           </div>
           <Table rows={rows} onEdit={handleEdit} onDelete={handleDelete} />
         </div>
@@ -63,6 +63,6 @@ export default function Inventory() {
         onClose={() => { setOpen(false); setEditing(null) }}
         onSave={handleSave}
       />
-    </>
+    </div>
   )
 }

@@ -59,34 +59,34 @@ export default function AddMicModal({ open, onClose, onSave, initial }: Props) {
   }
 
   return (
-    <div className="modal__backdrop" onClick={onClose}>
-      <div className="modal" onClick={e => e.stopPropagation()}>
-        <h3>{form.id ? 'Edit Mic' : 'Add Mic'}</h3>
-        <form className="form" onSubmit={save}>
-          <label>
-            <span>Label</span>
-            <input name="label" value={form.label} onChange={update} placeholder="e.g., Handheld 1" required />
+    <div className="fixed inset-0 backdrop-blur-sm z-50 grid place-items-center" onClick={onClose}>
+      <div className="w-[min(520px,92%)] bg-white rounded-2xl p-6 shadow-2xl border border-gray-100" onClick={e => e.stopPropagation()}>
+        <h3 className="text-xl font-bold text-gray-900 mb-4">{form.id ? 'Edit Mic' : 'Add Mic'}</h3>
+        <form className="grid gap-4" onSubmit={save}>
+          <label className="grid gap-1.5">
+            <span className="text-sm font-medium text-gray-500">Label</span>
+            <input name="label" value={form.label} onChange={update} placeholder="e.g., Handheld 1" required className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2"/>
           </label>
-          <label>
-            <span>Brand</span>
-            <input name="brand" value={form.brand} onChange={update} placeholder="e.g., Shure" required />
+          <label className="grid gap-1.5">
+            <span className="text-sm font-medium text-gray-500">Brand</span>
+            <input name="brand" value={form.brand} onChange={update} placeholder="e.g., Shure" required className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2"/>
           </label>
-          <label>
-            <span>Band</span>
-            <input name="band" value={form.band} onChange={update} placeholder="e.g., H50" required />
+          <label className="grid gap-1.5">
+            <span className="text-sm font-medium text-gray-500">Band</span>
+            <input name="band" value={form.band} onChange={update} placeholder="e.g., H50" required className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2"/>
           </label>
-          <label>
-            <span>Frequency (MHz)</span>
-            <input name="frequencyMHz" type="number" step="0.001" value={form.frequencyMHz} onChange={update} placeholder="e.g., 534.125" required />
+          <label className="grid gap-1.5">
+            <span className="text-sm font-medium text-gray-500">Frequency (MHz)</span>
+            <input name="frequencyMHz" type="number" step="0.001" value={form.frequencyMHz} onChange={update} placeholder="e.g., 534.125" required className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2"/>
           </label>
-          <label>
-            <span>Last Serviced</span>
-            <input name="lastServiced" type="date" value={form.lastServiced ?? ''} onChange={update} />
+          <label className="grid gap-1.5">
+            <span className="text-sm font-medium text-gray-500">Last Serviced</span>
+            <input name="lastServiced" type="date" value={form.lastServiced ?? ''} onChange={update} className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2"/>
           </label>
 
-          <div className="modal__actions">
-            <button type="button" className="btn" onClick={onClose}>Cancel</button>
-            <button type="submit" className="btn btn--primary">{form.id ? 'Save Changes' : 'Add Mic'}</button>
+          <div className="flex justify-end gap-3 mt-2">
+            <button type="button" className="px-4 py-2 rounded-xl font-semibold border border-gray-200 hover:bg-gray-50 cursor-pointer" onClick={onClose}>Cancel</button>
+            <button type="submit" className="px-4 py-2 rounded-xl font-semibold bg-brand-dark text-white hover:opacity-90 cursor-pointer">{form.id ? 'Save Changes' : 'Add Mic'}</button>
           </div>
         </form>
       </div>

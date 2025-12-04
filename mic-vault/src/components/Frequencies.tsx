@@ -6,7 +6,25 @@ import { useVault } from '../store/useVault'
 import type { Mic } from '../types'
 import { CheckCircledIcon, ExclamationTriangleIcon } from '@radix-ui/react-icons'
 
-export default function Spectrum() {
+const statuses = {
+  safe: {
+    line: 'bg-green-200',
+    badge: 'bg-green-50 border-green-200 text-green-700',
+    icon: <CheckCircledIcon />,
+  },
+  warning: {
+    line: 'bg-yellow-200',
+    badge: 'bg-yellow-50 border-yellow-200 text-yellow-700',
+    icon: <ExclamationTriangleIcon />,
+  },
+  danger: {
+    line: 'bg-red-200',
+    badge: 'bg-red-50 border-red-200 text-red-600',
+    icon: <ExclamationTriangleIcon />,
+  },
+}
+
+export default function Frequencies() {
   const { mics, addMic } = useVault()
   const [isModalOpen, setModalOpen] = useState(false)
 
@@ -17,53 +35,55 @@ export default function Spectrum() {
     setModalOpen(false)
   }
 
+  function getGapStatus(gap: number): 'safe' | 'warning' | 'danger' {
+    if (gap < 0.5) return 'danger'
+    if (gap < 1.0) return 'warning'
+    return 'safe'
+  }
+
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar onAddClick={() => setModalOpen(true)} />
-      <section className="hero hero--mini">
-        <div className="container hero__mini">
-          <h1>Frequency Ladder</h1>
-          <p>A simple list of your RF landscape, ordered from low to high.</p>
+      <section className="hero-gradient pt-28 pb-20 border-b border-gray-200/20">
+        <div className="max-w-[1100px] w-[92%] mx-auto">
+          <h1 className="text-3xl font-bold text-white mb-2">Frequency Ladder</h1>
+          <p className="text-blue-100">A simple list of your RF landscape, ordered from low to high.</p>
         </div>
       </section>
-      <section className="section section--padded">
-        <div className="container">
+      <section className="py-12 flex-1">
+        <div className="max-w-[600px] w-[92%] mx-auto">
 
           {sortedMics.length === 0 ? (
-            <div className="empty-state">No microphones in inventory.</div>
+            <div className="text-center text-gray-500 py-10 bg-gray-50 rounded-2xl border border-dashed border-gray-200">No microphones in inventory.</div>
           ) : (
-            <div className="ladder">
+            <div className="flex flex-col">
               {sortedMics.map((mic, index) => {
                 const nextMic = sortedMics[index + 1]
-                let gap = 0
-                let status = 'safe'
-
-                if (nextMic) {
-                  gap = nextMic.frequencyMHz - mic.frequencyMHz
-                  if (gap < 0.5) status = 'danger'
-                  else if (gap < 1.0) status = 'warning'
-                }
+                
+                const gap = nextMic ? nextMic.frequencyMHz - mic.frequencyMHz : 0
+                const status = getGapStatus(gap)
+                const styles = statuses[status]
 
                 return (
-                  <div key={mic.id} className="ladder__step">
-                    <div className="mic-card">
-                      <div className="mic-card__freq">
-                        {mic.frequencyMHz.toFixed(3)} <span className="unit">MHz</span>
+                  <div key={mic.id} className="flex flex-col">
+                    <div className="flex items-center gap-6 bg-white border border-gray-200 p-5 rounded-xl shadow-sm z-10 relative">
+                      <div className="font-mono text-2xl font-bold text-brand-dark min-w-[140px]">
+                        {mic.frequencyMHz.toFixed(3)} <span className="text-sm text-gray-400 font-sans font-medium">MHz</span>
                       </div>
-                      <div className="mic-card__info">
-                        <div className="mic-card__label">{mic.label}</div>
-                        <div className="mic-card__band">{mic.band}</div>
+                      <div>
+                        <div className="font-semibold text-lg text-gray-900">{mic.label}</div>
+                        <div className="text-sm text-gray-500">{mic.brand} - {mic.band}</div>
                       </div>
                     </div>
                     {nextMic && (
-                      <div className={`connector connector--${status}`}>
-                        <div className="connector__line" />
-                        <div className="connector__badge">
-                          {status === 'danger' && <ExclamationTriangleIcon />}
-                          {status === 'safe' && <CheckCircledIcon />}
+                      <div className="h-16 relative flex flex-col items-center">
+                        <div className={`w-0.5 flex-1 ${styles.line}`} />
+                        
+                        <div className={`absolute top-1/2 -translate-y-1/2 px-3 py-1 rounded-full border text-xs font-medium flex items-center gap-1.5 ${styles.badge}`}>
+                          {styles.icon}
                           <span>+{gap.toFixed(3)} MHz gap</span>
                         </div>
-                        <div className="connector__line" />
+                        <div className={`w-0.5 flex-1 ${styles.line}`} />
                       </div>
                     )}
                   </div>
@@ -80,6 +100,6 @@ export default function Spectrum() {
         onClose={() => setModalOpen(false)}
         onSave={handleSave}
       />
-    </>
+    </div>
   )
 }

@@ -17,37 +17,37 @@ export default function Landing() {
   }
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar onAddClick={() => setOpen(true)} />
-      <section className="hero">
-        <div className="container hero__inner">
-          <div className="hero__left">
-            <h1 className="hero__title">Wireless Mic Vault</h1>
-            <p className="hero__text">
+      <section className="hero-gradient pt-32 pb-20 border-b border-gray-200/20">
+        <div className="max-w-[1100px] w-[92%] mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-left">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">Wireless Mic Vault</h1>
+            <p className="text-lg text-blue-100 mb-8 max-w-lg leading-relaxed">
               Say goodbye to spreadsheets. Keep track of your wireless microphone's band, frequency, and service date all in one place.
             </p>
-            <div className="hero__actions">
-              <Link to="/inventory" className="btn btn">Get Started</Link>
-            </div>
+            <Link to="/inventory" className="inline-block bg-white text-gray-900 px-6 py-3 rounded-xl font-bold">
+              Get Started
+            </Link>
           </div>
-          <div className="hero__right">
-            <img src="/mics.png" alt="Wireless microphones" className="hero__image" />
+          <div className="flex justify-end">
+            <img src="/mics.png" alt="Wireless microphones" className="w-full max-w-[500px] rounded-2xl shadow-2xl shadow-black/40 rotate-1" />
           </div>
         </div>
       </section>
 
       <Features />
-      <section className="cta">
-        <div className="container cta__inner">
-          <h2 className="cta__title">Ready to get started?</h2>
-          <div className="cta__actions">
-            <button
-              className="btn btn--primary"
+      <section className="hero-gradient py-16 text-center border-y border-gray-200/20">
+        <div className="max-w-[1100px] w-[92%] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-white">Ready to get started?</h2>
+          <div className="flex gap-4">
+            <button 
+              className="bg-white text-gray-900 px-5 py-2.5 rounded-xl font-semibold hover:brightness-95" 
               onClick={() => setOpen(true)}
             >
               Add your first mic
             </button>
-            <Link to="/inventory" className="btn btn--ghost">
+            <Link to="/inventory" className="border border-white/40 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-white/10">
               See current inventory
             </Link>
           </div>
@@ -60,6 +60,6 @@ export default function Landing() {
         onClose={() => setOpen(false)}
         onSave={handleSave}
       />
-    </>
+    </div>
   )
 }
